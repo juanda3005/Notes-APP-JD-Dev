@@ -1,0 +1,30 @@
+<!--  //como el nombre error en passport es diferente al usado para las demas vistas y verificaciones
+   que es errors, en la plantilla hbs se debe crear la condicion
+    //para recorres esos mensajes-->
+
+  {{#if error}}
+     <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{error}}<!--error es como passport detecta los mensajes de flash y asi se llamó la variable global en index.js-->
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  {{/if}}
+
+
+
+
+<!--si existe un error comienzo a recorrer ese conjunto de errores (los errores fueron almacenados en una lista
+si hay un error muestro una alerta de bootstrap-->
+
+{{#each errors}}<!--Puedo usar esta variable ya que al views como una carpeta global, asi como llamo
+los archivos a renderizar desde notes sin tener que llamar a la carpeta views, de ese modo en las vistas puedo usar las variables
+de estos archivos-->
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    {{text}}<!--text en la variable que en notes tiene asignado los mensajes de error-->
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+{{/each}}
+

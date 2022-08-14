@@ -1,0 +1,45 @@
+<!--Pongo la sección de errores al escribir la nota, ya que al editarla tambien los pueden cometer-->
+{{#each errors}}
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    {{text}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+{{/each}}
+
+<div class="col-md-4 mx-auto">
+  <div class="card">
+    <div class="card-header text-center">
+      <h3>Edit Note</h3>
+    </div>
+    <div class="card-body">
+      <form action="/notes/edit-note/{{note._id}}?_method=PUT" method="POST"><!--se envia a travs de Postpero la conuslta se hace con put y debe tener 
+      esa sintaxis (con el signo de interrogación y agregando el boton hideen) para que la conuslta se haga correctamente-->
+        <input type="hidden" name="_method" value="PUT" />
+        <!--al editar la nota se pone un tipo hidden para que se envie una petición put
+                    pero igualmente luego se pone un boton de save, al usar el boton save se usa tambien el hidden es por eso
+                    que no se necesita usar la petición de nuevo en el boton save-->
+        <div class="mb-3">
+          <label for="title">Title:</label>
+          <input
+            type="text"
+            name="title"
+            class="form-control"
+            value="{{note.title}}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="description">Description:</label>
+          <textarea
+            name="description"
+            class="form-control"
+          >{{note.description}}</textarea>
+        </div>
+        <button class="btn btn-primary w-100" type="submit">
+          Save
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

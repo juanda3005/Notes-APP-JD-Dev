@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<div class="row">
+    {{#each notes}}
+       <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h3> Welcome! {{user.name}}</h3>
+                <!--user es la variable global dentro de request, de esta forma puede acceder a sus atributos como name-->
+                <h4 class="card-title d-flex-justify-content-between align-items-center"><!--las clases despues
+                de card-title son para alinear el icono de editar de fontawesome--->
+                    {{title}}<a href="/notes/edit/{{_id}}"><i class="fas fa-edit"></i></a><!--clases de font-awesome-->
+                </h4>
+                <p>{{description}}</p>
+
+                <!--DELETE REQUEST-->
+                <form action="/notes/delete/{{_id}}" method="POST"><!--gracias al modulo override se reemplaza el post por un delete-->
+                    <input type="hidden" />
+                    <button class="btn btn-danger btn-block btn-sm" type="submit">Delete</button><!--aqui el boton es de tipo submit para que se pueda 
+                    borrar la nota, al editar la nota se pone un tipo hidden para que se envie una petición post 
+                    pero igualmente luego se pone un boton de delete, al usar el delete tambien se usa tambien el hidden-->
+                </form>
+
+            </div>
+        </div>
+       </div>
+       <!-- si no hay notas muestro el siguiente mensaje-->
+    {{else}}
+       <div class="card mx-auto">
+        <div class="card-body">
+            <h1> Welcome! {{user.name}}</h1>
+                <!--user es la variable global dentro de request, de esta forma puede acceder a sus atributos como name-->
+            <p class="lead">There are not notes yet</p>
+            <a href="/notes/add" class="btn btn-success btn-block">Create One</a>
+        </div>
+       </div>
+    {{/each}}
+</div>

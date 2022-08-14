@@ -1,0 +1,38 @@
+
+
+<div class="col-md-4 mx-auto">
+  <div class="card">
+    <!--.card>.card-body-->
+    <div class="card-header">
+      <h1>New Note</h1>
+    </div>
+    <div class="card-body">
+      <form action="/notes/new-note" method="POST">
+        <div class="form-group">
+          <input
+            type="text"
+            name="title"
+            class="form-control"
+            placeholder="Title"
+            autofocus
+          /><!--el servidor recibe la información del input mediante el name el cual tiene el atributo title
+                el autofocus es para que el  cursor se ubique en el input cuando cargue la pagina-->
+        </div>
+
+        <div class="form-group">
+          <textarea
+            name="description"
+            class="form-control"
+            placeholder="Your note"
+          ></textarea><!-- la clase form control se adecua al tamaño de pantalla -->
+
+        </div>
+
+        <div class="form-group">
+          <button class="btn btn-primary btn-block" type="submit">Create Note</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
