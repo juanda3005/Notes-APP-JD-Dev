@@ -139,6 +139,8 @@ router.put('/notes/edit-note/:id',isAuthenticated,async (req,res)=>{
 
 
 //ruta para borrar la nota
+//al usar el override para sobreescribir el post con un delete ,al igual que se hizo al editar la nota, da error
+// aqui solo se usa un ost y al interior de la funcion callback de la ruta se elimina la nota de la base de datos
 router.post('/notes/delete/:id',isAuthenticated, async (req,res)=>{
     
     await Note.findByIdAndDelete(req.params.id);//elimino la nota de la base de datos
